@@ -8,14 +8,15 @@ set(CMAKE_CXX_COMPILER "E:/MinGW64/mingw64/bin/g++.exe")
 # ${PROJECT_SOUCE_DIR}为包含project命令的最近一个CMakeLists.txt所在文件夹
 include_directories(${PROJECT_SOUCE_DIR}/src)  # 需要include的东西 .h 所在位置
 
+set (CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin")
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin")
+set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/lib")
 
 # a.编译可执行文件
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/${PLATFORM})   # 设置最终可执行文件的输出位置
-add_executable(test ${PROJECT_SOURCE_DIR}/src/test.cpp)             # 编译时将输出一个可执行文件：json_test
+add_executable(test ${PROJECT_SOURCE_DIR}/src/test.cpp)                   # 编译时将输出一个可执行文件：test
 
 # b.编译库
-# set(LIBRARY_OUT_PATH ${PROJECT_SOURCE_DIR}/bin/${PLATFORM})       # 设置编译得到的库的位置
-# add_library(jsoncpp STATIC ${SOURCE_Files})                       # 编译时将输出一个Static库：jsoncpp
+# add_library(test SHARED ${PROJECT_SOURCE_DIR}/src/test.cpp)             # 编译时将输出一个STATIC/SHARED库：test
 
 
 # 告诉链接器在哪里查找库
